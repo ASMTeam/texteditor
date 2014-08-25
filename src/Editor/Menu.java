@@ -29,6 +29,7 @@ import javax.swing.JMenuItem;
 public class Menu extends JMenuBar
 {
     public Object editor;
+    private Settings settings;
     
     public Menu(JFrame frame)
     {
@@ -51,10 +52,11 @@ public class Menu extends JMenuBar
      */
     private void initMenu()
     {
-        JMenu [] menu  = new JMenu[3];
+        JMenu [] menu  = new JMenu[4];
         menu[0]= new JMenu("File");
         menu[1]= new JMenu("Edit");
         menu[2]= new JMenu("Execute");
+        menu[3] = new JMenu("Settings");
         JMenuItem jmiOpen = new JMenuItem("Open");
         JMenuItem jmiSave = new JMenuItem("Save");
         JMenuItem jmiClear = new JMenuItem("Clear");
@@ -64,6 +66,7 @@ public class Menu extends JMenuBar
         JMenuItem jmiCaret = new JMenuItem("Caret");
         JMenuItem compileProject = new JMenuItem("Compile Program");
         JMenuItem runProject = new JMenuItem("Run Program");
+        JMenuItem jmiSettings = new JMenuItem("Configure");
         
         menu[0].add(jmiOpen);
         menu[0].add(jmiSave);
@@ -78,10 +81,12 @@ public class Menu extends JMenuBar
         menu[2].add(compileProject);
         menu[2].add(runProject);
         
+        menu[3].add(jmiSettings);
         
         this.add(menu[0]);
         this.add(menu[1]);
         this.add(menu[2]);
+        this.add(menu[3]);
        
         
         jmiOpen.addActionListener(new ActionListener() {
@@ -149,6 +154,13 @@ public class Menu extends JMenuBar
                 ((CodeEditor)editor).execute();
             }
         
+        });
+        jmiSettings.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {   
+            	settings = new Settings();
+            }
         });
 
 
