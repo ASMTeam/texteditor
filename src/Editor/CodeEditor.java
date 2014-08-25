@@ -86,9 +86,14 @@ public class CodeEditor extends JFrame
     {
         try
         {
-           //WindowsFileChooserUI wui = new WindowsFileChooserUI(jFileChooser);
-           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-           //wui.installUI(this.jFileChooser);
+        	if(System.getProperty("os.name").trim().equals("Linux")){
+        		UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+            }else if(System.getProperty("os.name").contains("Windows")){
+            	UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            }else{
+            	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            }
+        	   
 
         } catch (Exception e) 
         {
